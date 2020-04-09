@@ -19,7 +19,7 @@
     CREATE DATABASE IF NOT EXISTS `exchange_office` ;
     GRANT ALL ON `exchange_office`.* TO 'exchange_office'@'%' ;
 
-    USE sharethisride_dev;
+    USE exchange_office;
     source /docker-entrypoint-initdb.d/ecomx_latest.sql;
 
 FLUSH PRIVILEGES ;

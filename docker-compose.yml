@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  nginx:
+      build: ./docker/nginx
+      container_name: exchange_office_nginx
+      ports:
+        - "8000:8000"
+      volumes:
+        - ./src:/code
+      depends_on:
+        - python
+
+  mysql:
+      build: ./docker/mysql
+      container_name: exchange_office_mysql
+      ports:
+        - 3306:3306
+      command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+      volumes:
+        - ./docker/mysql/data:/var/lib/mysql
+        - ./docker/mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: exchange_office
+        MYSQL_USER: exchange_office
+        MYSQL_PASSWORD: tzIRgZBEqDci
+        TZ: 'Europe/Kiev'
+
+  python:
+      container_name: exchange_office_python
+      build: ./docker/python
+      command: uwsgi --socket :8001 --module exchange_office.wsgi --py-autoreload 1 --logto /tmp/mylog.log
+      volumes:
+        - ./src:/code
+      expose:
+        - "8001"
+      depends_on:
+        - mysql

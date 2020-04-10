@@ -25,7 +25,7 @@ SECRET_KEY = '^&c=ebcj$_d)yuvm$-*)6pxatdtks)78r1vvyucs@=(b#aj@^$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['exchange.loc']
+ALLOWED_HOSTS = ['exchanger.loc']
 
 
 # Application definition

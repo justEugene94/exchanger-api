@@ -1,0 +1,16 @@
+- model: currencies.currency
+  pk: 1
+  fields:
+    name: USD
+- model: currencies.currency
+  pk: 2
+  fields:
+    name: EUR
+- model: currencies.currency
+  pk: 3
+  fields:
+    name: UAH
+- model: currencies.currency
+  pk: 4
+  fields:
+    name: RUR

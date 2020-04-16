@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_seed',
     'exchange_office.apps.currencies.apps.CurrenciesConfig',
+    'exchange_office.apps.сoefficients.apps.СoefficientsConfig',
 ]
 
 MIDDLEWARE = [

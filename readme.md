@@ -7,7 +7,7 @@ cd /home/projects
 sudo mkdir exchange_office
 sudo chown {{YOUR_USER}}:{{YOUR_USER}} exchange_office
 
-git clone git@github.com:justEugene94/exchange-api.git
+git clone git@github.com:justEugene94/exchanger-api.git
 ```
 
 * #### Add `init.sql` file

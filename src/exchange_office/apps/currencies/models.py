@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Currency(models.Model):
 
     name = models.CharField('имя', max_length = 5)

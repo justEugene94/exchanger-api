@@ -40,9 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'django_seed',
     'exchange_office.apps.currencies.apps.CurrenciesConfig',
-    'exchange_office.apps.сoefficients.apps.СoefficientsConfig',
+    'exchange_office.apps.coefficients.apps.CoefficientsConfig',
 ]
 
 MIDDLEWARE = [

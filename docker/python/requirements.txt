@@ -4,4 +4,3 @@ mysql==0.0.2
 mysqlclient==1.4.1
 djangorestframework==3.11.0
 PyYAML==5.3.1
-django-seed==0.2.2

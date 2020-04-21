@@ -1,25 +1,6 @@
-###
-### Copy init.sql.example to init.sql
-### then uncomment then set database name and username to create you need databases
-#
-# example: .env MYSQL_USER=appuser and need db name is myshop_db
-#
-#    CREATE DATABASE IF NOT EXISTS `myshop_db` ;
-#    GRANT ALL ON `myshop_db`.* TO 'appuser'@'%' ;
-#
-###
-### this sql script is auto run when db container start and $DATA_PATH_HOST/mysql not exists.
-###
-### if your $DATA_PATH_HOST/mysql is exists and you do not want to delete it, you can run by manual execution:
-###
-###     docker-compose exec -u 1000 db bash
-###     mysql -u root -p < /docker-entrypoint-initdb.d/createdb.sql
-###
+CREATE DATABASE IF NOT EXISTS `exchange_office`;
+GRANT ALL PRIVILEGES ON `exchange_office`.* TO 'exchange_office'@'%';
 
-    CREATE DATABASE IF NOT EXISTS `exchange_office` ;
-    GRANT ALL ON `exchange_office`.* TO 'exchange_office'@'%' ;
-
-    USE exchange_office;
-    source /docker-entrypoint-initdb.d/ecomx_latest.sql;
+USE exchange_office;
 
 FLUSH PRIVILEGES ;

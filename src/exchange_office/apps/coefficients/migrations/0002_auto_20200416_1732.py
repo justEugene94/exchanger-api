@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('сoefficients', '0001_initial'),
+        ('coefficients', '0001_initial'),
     ]
 
     operations = [
@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
                 ('amount', models.IntegerField(verbose_name='сумма')),
                 ('percent', models.FloatField(verbose_name='процент')),
                 ('pub_date', models.DateTimeField(verbose_name='дата публикации')),
-                ('commerce_value', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='сoefficients.CommerceValue')),
+                ('commerce_value', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='coefficients.CommerceValue')),
             ],
             options={
                 'verbose_name': 'Коэффициет',

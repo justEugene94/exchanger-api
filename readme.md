@@ -40,7 +40,7 @@ python3 manage.py migrate
 Seeds:
 ```bash
 python3 manage.py loaddata currencies commerce_value
-python3 manage.py coefficient_seed
+python3 manage.py coefficient_seed --number=20
 ```
 
 Static:

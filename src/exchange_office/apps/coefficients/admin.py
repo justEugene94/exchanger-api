@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Coefficient, CommerceValue
+
+admin.site.register(Coefficient)
+admin.site.register(CommerceValue)

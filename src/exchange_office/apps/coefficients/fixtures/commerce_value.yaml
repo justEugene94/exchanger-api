@@ -1,12 +1,12 @@
-- model: сoefficients.commerceValue
+- model: coefficients.commerceValue
   plk: 1
   fields:
     name: sale
-- model: сoefficients.commerceValue
+- model: coefficients.commerceValue
   plk: 2
   fields:
     name: buy
-- model: сoefficients.commerceValue
+- model: coefficients.commerceValue
   plk: 3
   fields:
     name: amount

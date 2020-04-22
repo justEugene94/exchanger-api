@@ -39,6 +39,9 @@ class Coefficient(models.Model):
         on_delete=models.CASCADE
     )
 
+    def __str__(self):
+        return 'Процент ' + str(self.percent) + ' от ' + str(self.amount) + ' заявок'
+
     class Meta:
         verbose_name = "Коэффициет"
         verbose_name_plural = "Коэффициеты"

@@ -3,7 +3,7 @@ import random
 from django.core.management.base import BaseCommand
 from django.utils import timezone
 
-from exchange_office.apps.сoefficients.models import Coefficient, CommerceValue
+from exchange_office.apps.coefficients.models import Coefficient, CommerceValue
 
 
 class Command(BaseCommand):

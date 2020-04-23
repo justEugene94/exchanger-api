@@ -1,7 +1,9 @@
-from django.urls import path
+from rest_framework.routers import DefaultRouter
 
-from . import views
+from .views import CoefficientView
+from .models import Coefficient
 
-urlpatterns = [
-    path('', views.index)
-]
+router = DefaultRouter()
+router.register('', CoefficientView, basename = Coefficient)
+
+urlpatterns = router.urls

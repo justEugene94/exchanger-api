@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
     'exchange_office.apps.currencies.apps.CurrenciesConfig',
     'exchange_office.apps.coefficients.apps.CoefficientsConfig',
 ]

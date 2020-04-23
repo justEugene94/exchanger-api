@@ -7,12 +7,14 @@ from .models import Currency
 
 class CurrencyView(viewsets.ViewSet):
 
-    queryset = Currency.objects.all()
-    serializer_class = CurrencySerializer
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+        self.queryset = Currency.objects.all()
+        self.serializer_class = CurrencySerializer
 
     def list(self, request):
-        queryset = Currency.objects.all()
 
-        serializer = CurrencySerializer(queryset, many = True)
+        serializer = CurrencySerializer(self.queryset, many = True)
 
         return Response(serializer.data)

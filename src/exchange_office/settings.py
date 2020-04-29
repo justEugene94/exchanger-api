@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'exchange_office.apps.currencies.apps.CurrenciesConfig',
     'exchange_office.apps.coefficients.apps.CoefficientsConfig',
+    'exchange_office.apps.purchases.apps.PurchasesConfig',
 ]
 
 MIDDLEWARE = [

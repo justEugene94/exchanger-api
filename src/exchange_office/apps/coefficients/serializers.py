@@ -9,7 +9,7 @@ class CoefficientSerializer(serializers.ModelSerializer):
 
     percent = serializers.FloatField(required=True, max_value=0.99, min_value=0)
 
-    commerce_value = serializers.IntegerField(required=True)
+    commerce_value = serializers.CharField(required=True)
 
     def create(self, validated_data):
 

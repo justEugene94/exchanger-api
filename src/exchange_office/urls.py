@@ -22,5 +22,6 @@ urlpatterns = [
     path('api/login', obtain_auth_token, name='login'),
     path('api/currencies/', include('currencies.urls')),
     path('api/coefficients/', include('coefficients.urls')),
+    # path('api/purchases/', include('purchases.urls')),
     path('admin/', admin.site.urls),
 ]

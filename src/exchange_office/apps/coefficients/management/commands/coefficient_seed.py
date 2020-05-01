@@ -3,7 +3,7 @@ import random
 from django.core.management.base import BaseCommand
 from django.utils import timezone
 
-from exchange_office.apps.coefficients.models import Coefficient, CommerceValue
+from coefficients.models import Coefficient, CommerceValue
 
 
 class Command(BaseCommand):
@@ -46,6 +46,6 @@ class Command(BaseCommand):
 
         coefficient.save()
 
-        self.stdout.write("{} address created.".format(coefficient))
+        self.stdout.write("{} coefficient created.".format(coefficient))
 
         return coefficient

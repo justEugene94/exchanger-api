@@ -41,6 +41,7 @@ Seeds:
 ```bash
 python3 manage.py loaddata currencies commerce_value
 python3 manage.py coefficient_seed --number=20
+python3 manage.py purchase_seed --customers=10 --purchases=15
 ```
 
 Static:

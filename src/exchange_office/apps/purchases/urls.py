@@ -1,9 +1,11 @@
 from rest_framework.routers import DefaultRouter
+from django.urls import path
 
-from .views import CoefficientViewSet
-from .models import Purchase
+from .views import PurchaseView
 
-router = DefaultRouter()
-router.register('', CoefficientViewSet, basename = Purchase)
+# router = DefaultRouter()
+# router.register('',  PurchaseView.as_view())
 
-urlpatterns = router.urls
+urlpatterns = [
+    path('', PurchaseView.as_view())
+]

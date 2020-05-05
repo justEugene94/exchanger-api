@@ -27,9 +27,6 @@ class PurchaseView(APIView):
 
         serializer = self.serializer_class(data=request.data)
 
-        # if serializer.is_valid():
-        #     return Response({'data': serializer.data()})
-
         if serializer.is_valid():
             purchase = serializer.save()
 

@@ -1,35 +1,32 @@
-from rest_framework.authentication import BasicAuthentication, SessionAuthentication, TokenAuthentication
-from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.decorators import permission_classes, authentication_classes, api_view
+from rest_framework.decorators import permission_classes, api_view
 from rest_framework.permissions import IsAuthenticated
 
 from .models import Purchase
 from .serializers import PurchaseSerializer
 
 
-class PurchaseView(APIView):
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get(request):
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+    return Response(PurchaseSerializer(Purchase.objects.all(), many=True).data)
 
-        self.queryset = Purchase.objects.all()
-        self.serializer_class = PurchaseSerializer
 
-    # @api_view(['GET'])
-    # @authentication_classes([TokenAuthentication])
-    # @permission_classes([IsAuthenticated])
-    def get(self, request):
+@api_view(['POST'])
+def post(request):
 
-        return Response(self.serializer_class(self.queryset, many=True).data)
+    serializer = PurchaseSerializer(data=request.data)
 
-    def post(self, request):
+    if serializer.is_valid():
+        purchase = serializer.save()
 
-        serializer = self.serializer_class(data=request.data)
+        return Response(PurchaseSerializer(purchase).data)
 
-        if serializer.is_valid():
-            purchase = serializer.save()
+    return Response({'error': serializer.is_valid(raise_exception=True)})
 
-            return Response(self.serializer_class(purchase).data)
-
-        return Response({'error': serializer.is_valid(raise_exception=True)})
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def show(request, pk):
+    
+    return Response(PurchaseSerializer(Purchase.objects.get(id=pk)).data)

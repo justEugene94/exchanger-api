@@ -41,4 +41,4 @@ class PurchaseSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Purchase
-        fields = ('id', 'customer', 'currency', 'exchange_currency', 'value')
+        fields = ('id', 'customer', 'currency', 'exchange_currency', 'value', 'created_at')

@@ -18,15 +18,17 @@ def post(request):
 
     serializer = PurchaseSerializer(data=request.data)
 
-    if serializer.is_valid():
-        purchase = serializer.save()
+    if not serializer.is_valid():
+        return Response({'error': serializer.is_valid(raise_exception=True)})
 
-        return Response(PurchaseSerializer(purchase).data)
+    purchase = serializer.save()
 
-    return Response({'error': serializer.is_valid(raise_exception=True)})
+    return Response(PurchaseSerializer(purchase).data)
+
+
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def show(request, pk):
-    
+
     return Response(PurchaseSerializer(Purchase.objects.get(id=pk)).data)

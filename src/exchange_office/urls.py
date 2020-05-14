@@ -20,6 +20,7 @@ from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
     path('api/login', obtain_auth_token, name='login'),
+    path('api/', include('exchanger.urls')),
     path('api/currencies/', include('currencies.urls')),
     path('api/coefficients/', include('coefficients.urls')),
     path('api/purchases/', include('purchases.urls')),

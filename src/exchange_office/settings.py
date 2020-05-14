@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'exchange_office.apps.currencies.apps.CurrenciesConfig',
     'exchange_office.apps.coefficients.apps.CoefficientsConfig',
     'exchange_office.apps.purchases.apps.PurchasesConfig',
+    'exchange_office.apps.exchanger.apps.ExchangerConfig',
 ]
 
 MIDDLEWARE = [

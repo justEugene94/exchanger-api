@@ -2,7 +2,7 @@ from random import randint
 
 from django.utils import timezone
 from django.db import models
-from django.db.models import Count
+from django.db.models import Count, Sum
 
 from currencies.models import Currency
 
@@ -37,22 +37,34 @@ class Customer(models.Model):
         verbose_name_plural = "Покупатели"
 
 
+class PurchaseManager(models.Manager):
+    def get_sum(self, currency: Currency, accessor: str = 'buy'):
+
+        if accessor == 'sale':
+            return self.filter(currency_id=currency.id).aggregate(Sum('value'))['value__sum']
+        else:
+            return self.filter(exchange_currency_id=currency.id).aggregate(Sum('value'))['value__sum']
+
+
 class Purchase(models.Model):
+
+    objects = PurchaseManager()
 
     customer = models.ForeignKey(
         Customer,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name='purchase'
     )
 
     currency = models.ForeignKey(
         Currency,
-        related_name='currency',
-        on_delete=models.CASCADE
+        related_name='purchase',
+        on_delete=models.CASCADE,
     )
 
     exchange_currency = models.ForeignKey(
         Currency,
-        related_name='exchange_currency',
+        related_name='exchange_purchase',
         on_delete=models.CASCADE
     )
 
@@ -62,6 +74,7 @@ class Purchase(models.Model):
 
     def __str__(self):
         return f'Денежная сумма: {str(self.value)} пользователя № {str(self.customer)}'
+
 
     class Meta:
 

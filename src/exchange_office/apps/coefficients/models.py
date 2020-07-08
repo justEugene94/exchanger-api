@@ -1,7 +1,7 @@
 from random import randint
 
 from django.db import models
-from django.db.models import Count
+from django.db.models import Count, Q
 
 
 class CommerceValueManager(models.Manager):
@@ -26,7 +26,15 @@ class CommerceValue(models.Model):
         verbose_name_plural = "Коммерческие ценности"
 
 
+class CoefficientManager(models.Manager):
+
+    def get_by_sum_of_purchase_amount(self, amount_of_purchases: int, accessor: str):
+        return self.filter(Q(commerce_value__name=accessor) & Q(amount__lt=amount_of_purchases)).order_by('-amount').first().percent
+
+
 class Coefficient(models.Model):
+
+    objects = CoefficientManager()
 
     amount = models.IntegerField('сумма')
 
@@ -45,3 +53,4 @@ class Coefficient(models.Model):
     class Meta:
         verbose_name = "Коэффициет"
         verbose_name_plural = "Коэффициеты"
+        # ordering = ['-amount']

@@ -20,21 +20,21 @@ class Customer(models.Model):
 
     objects = CustomerManager()
 
-    first_name = models.CharField('имя', max_length=20)
-    last_name = models.CharField('фамилия', max_length=20)
-    phone_number = models.CharField('номер телефона', max_length=20, unique=True)
-    created_at = models.DateTimeField('дата создания', default=timezone.now)
+    first_name = models.CharField(verbose_name='имя', max_length=20)
+    last_name = models.CharField(verbose_name='фамилия', max_length=20)
+    phone_number = models.CharField(verbose_name='номер телефона', max_length=20, unique=True)
+    created_at = models.DateTimeField(verbose_name='дата создания', auto_now_add=True)
+    updated_at = models.DateTimeField(verbose_name='дата обновления', auto_now=True)
 
     def __str__(self):
         return f'{self.first_name}  {self.last_name}'
 
 
     class Meta:
-
         db_table = 'customers'
-
         verbose_name = "Покупатель"
         verbose_name_plural = "Покупатели"
+        ordering = ['-created_at']
 
 
 class PurchaseManager(models.Manager):
@@ -47,7 +47,6 @@ class PurchaseManager(models.Manager):
 
 
 class Purchase(models.Model):
-
     objects = PurchaseManager()
 
     customer = models.ForeignKey(
@@ -68,17 +67,15 @@ class Purchase(models.Model):
         on_delete=models.CASCADE
     )
 
-    value = models.PositiveIntegerField('денежная сумма')
-
-    created_at = models.DateTimeField('дата создания', default=timezone.now)
+    value = models.PositiveIntegerField(verbose_name='денежная сумма')
+    created_at = models.DateTimeField(verbose_name='дата создания', auto_now_add=True)
+    updated_at = models.DateTimeField(verbose_name='дата обновления', auto_now=True)
 
     def __str__(self):
         return f'Денежная сумма: {str(self.value)} пользователя № {str(self.customer)}'
 
-
     class Meta:
-
         db_table = 'purchases'
-
         verbose_name = 'Покупка'
         verbose_name_plural = 'Покупки'
+        ordering = ['-created_at']

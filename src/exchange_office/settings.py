@@ -137,3 +137,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+
+BANK_API_RESPONSE = 'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5'

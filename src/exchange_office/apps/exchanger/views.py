@@ -1,5 +1,7 @@
-import json
-from urllib.request import urlopen
+import requests
+from django.conf import settings
+
+from rest_framework import status
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -11,16 +13,16 @@ from coefficients.models import Coefficient
 
 @api_view(['GET'])
 def index(request):
-    url = 'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5'
 
-    json_url = urlopen(url)
+    try:
+        bank_api_response = requests.get(settings.BANK_API_RESPONSE).json()
+    except Exception:
+        return Response('Ошибка банка', status=status.HTTP_404_NOT_FOUND)
 
-    data = json.loads(json_url.read())
+    for course in bank_api_response:
 
-    for course in data:
-
-        if course['ccy'] != 'BTC':
-            currency = Currency.objects.get(name=course['ccy'])
+        if not course.get('ccy') == 'BTC':
+            currency = Currency.objects.get(name=course.get('ccy'))
 
             sale_purchases = Purchase.objects.get_sum(currency, 'sale')
             buy_purchases = Purchase.objects.get_sum(currency, 'buy')
@@ -34,6 +36,4 @@ def index(request):
             if coefficient_for_buy:
                 course['buy'] = str(round(float(course.get('buy')) * coefficient_for_buy, 5))
 
-            # return Response(course['ccy'])
-
-    return Response(data)
+    return Response(bank_api_response)

@@ -13,10 +13,9 @@ class CommerceValueManager(models.Manager):
 
 
 class CommerceValue(models.Model):
-
     objects = CommerceValueManager()
 
-    name = models.CharField('имя', max_length = 6)
+    name = models.CharField(verbose_name='имя', max_length=6)
 
     def __str__(self):
         return self.name
@@ -33,14 +32,12 @@ class CoefficientManager(models.Manager):
 
 
 class Coefficient(models.Model):
-
     objects = CoefficientManager()
 
-    amount = models.IntegerField('сумма')
-
-    percent = models.FloatField('процент')
-
-    pub_date = models.DateTimeField('дата публикации')
+    amount = models.IntegerField(verbose_name='сумма')
+    percent = models.FloatField(verbose_name='процент')
+    created_at = models.DateTimeField(verbose_name='дата публикации', auto_now_add=True)
+    updated_at = models.DateTimeField(verbose_name='дата обновления', auto_now=True)
 
     commerce_value = models.ForeignKey(
         CommerceValue,

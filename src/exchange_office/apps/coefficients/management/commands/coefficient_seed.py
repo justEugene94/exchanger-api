@@ -40,8 +40,7 @@ class Command(BaseCommand):
         coefficient = Coefficient(
             amount=random.randint(5, 45),
             percent = round(random.uniform(0, 1), 3),
-            commerce_value = CommerceValue.objects.random(),
-            pub_date = timezone.now(),
+            commerce_value = CommerceValue.objects.random()
         )
 
         coefficient.save()

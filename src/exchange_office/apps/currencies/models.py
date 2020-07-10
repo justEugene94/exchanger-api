@@ -17,7 +17,7 @@ class Currency(models.Model):
 
     objects = CurrencyManager()
 
-    name = models.CharField('имя', max_length = 5)
+    name = models.CharField(verbose_name='имя', max_length = 5)
 
     def __str__(self):
         return self.name

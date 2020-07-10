@@ -56,8 +56,7 @@ class Command(BaseCommand):
         customer = Customer(
             first_name=random.choice(first_names),
             last_name=random.choice(last_names),
-            phone_number=random.randint(80930000000, 80939999999),
-            created_at=timezone.now()
+            phone_number=random.randint(80930000000, 80939999999)
         )
 
         customer.save()
@@ -83,8 +82,7 @@ class Command(BaseCommand):
             customer=Customer.objects.random(),
             currency=currency,
             exchange_currency=exchange_currency,
-            value=random.randint(100, 2000),
-            created_at=timezone.now()
+            value=random.randint(100, 2000)
         )
 
         purchase.save()

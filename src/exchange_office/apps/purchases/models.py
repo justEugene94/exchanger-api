@@ -16,7 +16,6 @@ class CustomerManager(models.Manager):
 
 
 class Customer(models.Model):
-
     objects = CustomerManager()
 
     first_name = models.CharField(verbose_name='имя', max_length=20)
@@ -27,7 +26,6 @@ class Customer(models.Model):
 
     def __str__(self):
         return f'{self.first_name}  {self.last_name}'
-
 
     class Meta:
         db_table = 'customers'

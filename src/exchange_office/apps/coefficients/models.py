@@ -48,6 +48,6 @@ class Coefficient(models.Model):
         return 'Процент ' + str(self.percent) + ' от ' + str(self.amount) + ' заявок'
 
     class Meta:
-        verbose_name = "Коэффициет"
-        verbose_name_plural = "Коэффициеты"
+        verbose_name = "Коэффициент"
+        verbose_name_plural = "Коэффициенты"
         # ordering = ['-amount']

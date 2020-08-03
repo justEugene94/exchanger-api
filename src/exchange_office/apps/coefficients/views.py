@@ -1,4 +1,3 @@
-from rest_framework.response import Response
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 
@@ -10,11 +9,21 @@ class CommerceValueViewSet(viewsets.ReadOnlyModelViewSet):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
+        self.permission_classes = (IsAuthenticated,)
+
+        self.queryset = CommerceValue.objects.all()
+        self.serializer_class = CommerceValueSerializer
+
+
+class CommerceValueForUsersViewSet(viewsets.ReadOnlyModelViewSet):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
         self.queryset = CommerceValue.objects.all()
         self.serializer_class = CommerceValueSerializer
 
     def get_queryset(self):
-        return CommerceValue.objects.all()
+        return CommerceValue.objects.exclude(name='amount')
 
 
 class CoefficientViewSet(viewsets.ModelViewSet):

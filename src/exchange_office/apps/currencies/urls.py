@@ -5,6 +5,6 @@ from .views import CurrencyView
 from .models import Currency
 
 router = DefaultRouter()
-router.register('', CurrencyView, basename = Currency)
+router.register('currencies', CurrencyView, basename = Currency)
 
 urlpatterns = router.urls

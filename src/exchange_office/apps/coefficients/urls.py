@@ -5,7 +5,7 @@ from .views import CoefficientViewSet, CommerceValueViewSet
 from .models import Coefficient
 
 router = DefaultRouter()
-router.register('', CoefficientViewSet, basename = Coefficient)
+router.register('coefficients', CoefficientViewSet, basename = Coefficient)
 
 urlpatterns = [
     url('commerce-value/', CommerceValueViewSet.as_view({'get': 'list'})),

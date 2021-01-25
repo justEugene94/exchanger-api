@@ -1,2 +1,5 @@
 .idea
 /src/geckodriver.log
+/src/exchange_office/functional_tests/screendumps
+/src/exchange_office/static
+/src/.coverage

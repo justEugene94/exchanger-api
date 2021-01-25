@@ -37,3 +37,13 @@ services:
         - "8001"
       depends_on:
         - mysql
+        - selenium
+      environment:
+        SELENIUM_HOST: http://selenium:4444/wd/hub
+
+  selenium:
+    container_name: exchanger_selenium_chrome
+    image: selenium/standalone-chrome-debug
+    ports:
+      - "5900:5900"
+      - "4444:4444"

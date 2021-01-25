@@ -27,7 +27,7 @@ SECRET_KEY = '^&c=ebcj$_d)yuvm$-*)6pxatdtks)78r1vvyucs@=(b#aj@^$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['exchanger.loc']
+ALLOWED_HOSTS = ['exchanger.loc', 'nginx']
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
+    'exchange_office.functional_tests',
     'exchange_office.apps.currencies.apps.CurrenciesConfig',
     'exchange_office.apps.coefficients.apps.CoefficientsConfig',
     'exchange_office.apps.purchases.apps.PurchasesConfig',
@@ -95,6 +96,10 @@ DATABASES = {
         'PASSWORD': 'tzIRgZBEqDci',
         'HOST': 'mysql',
         'PORT': '3306',
+        'TEST': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'test_exchange_office'
+        }
     }
 }
 

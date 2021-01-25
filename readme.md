@@ -44,12 +44,12 @@ python3 manage.py coefficient_seed --number=20
 python3 manage.py purchase_seed --customers=10 --purchases=15
 ```
 
-Functional tests:
-```bash
-xvfb-run python functional_tests.py
-```
-
 Static:
 ```bash
 python3 manage.py collectstatic
+```
+
+Functional tests:
+```bash
+docker-compose run django ./manage.py test
 ```

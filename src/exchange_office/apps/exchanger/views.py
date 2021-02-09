@@ -1,9 +1,6 @@
-from django.shortcuts import render
+from django.views.generic import TemplateView
 
 
-def index(request):
-    """home page"""
 
-    print(123)
-
-    return render(request, 'exchanger/home.html')
+class HomePageView(TemplateView):
+    template_name = 'exchanger/home.html'

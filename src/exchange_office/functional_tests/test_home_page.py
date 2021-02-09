@@ -1,10 +1,7 @@
 import os
-import socket
 from datetime import datetime
-from unittest import TestCase
 
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
-from django.test import LiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver import DesiredCapabilities
 
@@ -20,7 +17,6 @@ class HomePage(StaticLiveServerTestCase):
 
     def setUp(self):
         """ install """
-        # self.browser = webdriver.Chrome()
         self.browser = webdriver.Remote(
             command_executor='http://selenium:4444/wd/hub',
             desired_capabilities=DesiredCapabilities.CHROME
@@ -82,8 +78,13 @@ class HomePage(StaticLiveServerTestCase):
         self.browser.get('http://nginx:8000/')
 
         # User see title of home page
-        assert 'Exchange office' in self.browser.title
+        self.assertEqual('Exchange office', self.browser.title)
+        header_text = self.browser.find_element_by_class_name('display-4').text
+        self.assertIn('Exchange office', header_text)
 
         # User see exchange rates
+        card_headers = self.browser.find_elements_by_tag_name('h4')
+        for card_header in card_headers:
+            self.assertIn(card_header.text, ('USD', 'EUR', 'RUR', 'BTC',))
 
         # User click on link

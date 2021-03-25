@@ -7,6 +7,6 @@ mysqlclient==1.4.1
 djangorestframework==3.11.0
 selenium==3.141.0
 coverage==5.3.1
-PyYAML==5.3.1
+PyYAML==5.4
 ipdb==0.13.2
 requests==2.24.0
